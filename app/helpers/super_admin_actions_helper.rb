@@ -1,0 +1,2 @@
+module SuperAdminActionsHelper
+end
