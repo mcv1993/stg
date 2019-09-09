@@ -1,0 +1,10 @@
+  <h1 class="text-center">All clients</h1>
+  <hr />
+
+  <% @client.each do |client| %>
+    <h2 class="text-center">
+      <%= link_to client.clientname, client_path(client) %>
+    </h2>
+    <br />
+  <br class="clr" />
+  <% end %>

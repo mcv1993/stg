@@ -15,6 +15,7 @@ class DashboardsController < ApplicationController
   def show
     #show create buttons for @user, @client, etc
     @user = User.new
+    @client = Client.new
   end
 
   private

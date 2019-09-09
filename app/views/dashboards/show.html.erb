@@ -5,40 +5,37 @@
   Add a new user...
 </button>
 
-<%= link_to 'Add a Client', '#', class: 'nav-link' %>
-
-
-<!-- Modal -->
-<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModalLabel" aria-hidden="true">
+<!-- New User Modal -->
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="newUserModalLabel">Add a new User</h4>
+        <h4 class="modal-title" id="newUserModal">Add a new User</h4>
       </div>
       <div class="modal-body">
-<%= simple_form_for @user, url: users_path do |f| %>
-  <%= f.error_notification %>
+        <%= simple_form_for @user, url: users_path do |f| %>
+          <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :superadmin,     as: :radio_buttons %>
-    <%= f.input :admin,     as: :radio_buttons %>
-  </div>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :superadmin,     as: :radio_buttons %>
+            <%= f.input :admin,     as: :radio_buttons %>
+          </div>
 
-  <div class="form-actions">
-    <%= f.submit "Add New User" %>
-  </div>
-<% end %>
+          <div class="form-actions">
+            <%= f.submit "Add New User" %>
+          </div>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -47,3 +44,44 @@
     </div>
   </div>
 </div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newClientModal">
+  Add a new client...
+</button>
+
+<!-- New Client Modal -->
+<div class="modal fade" id="newClientModal" tabindex="-1" role="dialog" aria-labelledby="newClientModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="newClientModal">Add a new Client</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @client, url: clients_path do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :clientname,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+          </div>
+
+          <div class="form-actions">
+            <%= f.submit "Add New Client" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<%= link_to "All Clients", clients_path%>
+<%= link_to "All Users", users_path%>

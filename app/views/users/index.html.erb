@@ -1,0 +1,10 @@
+  <h1 class="text-center">All Users</h1>
+  <hr />
+
+  <% @user.each do |user| %>
+    <h2 class="text-center">
+      <%= link_to user.email, user_path(user) %>
+    </h2>
+    <br />
+  <br class="clr" />
+  <% end %>
