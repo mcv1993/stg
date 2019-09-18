@@ -4,6 +4,7 @@
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newUserModal">
   Add a new user...
 </button>
+<%= link_to "All Users", users_path%>
 
 <!-- New User Modal -->
 <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModal" aria-hidden="true">
@@ -84,4 +85,9 @@
 
 
 <%= link_to "All Clients", clients_path%>
-<%= link_to "All Users", users_path%>
+
+<br />
+<br />
+
+<%= link_to 'Home', root_path %>
+
