@@ -16,3 +16,14 @@
 
  @import "bootstrap";
  
+
+ .title {
+
+  text-align: center
+ }
+
+ .loginform  {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+ }
