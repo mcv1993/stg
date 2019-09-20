@@ -8,6 +8,9 @@ class UsersController < ApplicationController
    # @user = User.new
   end
 
+  def create_access_key
+    ApiKeyMaker.make_api_key(12)
+  end
 
   def create
     @user = User.create(user_params)
@@ -22,7 +25,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :admin, :superadmin)
+    params.require(:user).permit(:email, :password, :admin, :superadmin, :api_key)
   end
 
 end

@@ -29,10 +29,20 @@
             <%= f.input :password_confirmation,
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
-            <%= f.input :superadmin,     as: :radio_buttons %>
-            <%= f.input :admin,     as: :radio_buttons %>
-          </div>
 
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Admin Level
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item"> <%= f.input :admin %></a>
+                <a class="dropdown-item"> <%= f.input :superadmin %></a>
+              </div>
+            </div>            
+          </div>
+          *(If nothing is selected, a Standard user will be created)
+<br />
+<br />
           <div class="form-actions">
             <%= f.submit "Add New User" %>
           </div>
