@@ -1,5 +1,4 @@
-class ClientsController < ApplicationControllers
-  before_action :authenticate_user!
+class ClientsController < ApplicationController
   
   def index
     @client = Client.all
@@ -11,11 +10,8 @@ class ClientsController < ApplicationControllers
   end
 
   def show
+    @client = Client.find(params[:id])
     @section = Section.new
-  end
-
-  def create_api
-    ApiKeyMaker.make_api_key(12)
   end
 
   private
