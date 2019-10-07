@@ -34,10 +34,7 @@
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Select Admin Level
               </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item"> <%= f.input :admin %></a>
-                <a class="dropdown-item"> <%= f.input :superadmin %></a>
-              </div>
+
             </div>            
           </div>
           *(If nothing is selected, a Standard user will be created)
@@ -100,4 +97,18 @@
 <br />
 
 <%= link_to 'Home', root_path %>
+
+
+  <% if current_user.type == "Sa" %>
+    <p>i am sa</p>
+    <%= link_to "Log Out SA", destroy_user_session_path, method: :delete %>
+
+  <% elsif current_user.type == "Admin" %>
+    <p>i am Admin</p>
+    <%= link_to "Log Out Admin", destroy_admin_session_path, method: :delete %>
+
+  <% elsif current_user.type == "Tech" %>
+    <p>i am Tech</p>
+    <%= link_to "Log Out Tech", destroy_tech_session_path, method: :delete %>
+  <% end %>
 

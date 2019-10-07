@@ -8,24 +8,20 @@ class UsersController < ApplicationController
    # @user = User.new
   end
 
-  def create_access_key
-    ApiKeyMaker.make_api_key(12)
-  end
-
   def create
     @user = User.create(user_params)
     redirect_to root_path
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[user_params])
     redirect_to root_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :admin, :superadmin, :api_key)
+    params.require(:user).permit(:email, :password)
   end
 
 end

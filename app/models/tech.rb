@@ -1,0 +1,3 @@
+class Tech < User
+  
+end
