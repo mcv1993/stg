@@ -29,18 +29,10 @@
             <%= f.input :password_confirmation,
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
-
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select Admin Level
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item"> <%= f.input :admin %></a>
-                <a class="dropdown-item"> <%= f.input :superadmin %></a>
-              </div>
-            </div>            
+            <%= f.input :type,
+                        required: true,
+                        input_html: { autocomplete: "SA/Admin/Tech" } %>           
           </div>
-          *(If nothing is selected, a Standard user will be created)
 <br />
 <br />
           <div class="form-actions">
@@ -100,4 +92,28 @@
 <br />
 
 <%= link_to 'Home', root_path %>
+
+
+<br />
+  <% if user_signed_in? %>
+    <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+  <% end %>
+
+  <% if current_user.type == 'Admin' %>
+    <%= "I am Admin" %>
+  <% end %>
+
+    <% if current_user.type == 'Sa' %>
+    <%= "I am SA" %>
+  <% end %>
+
+    <% if current_user.type == 'Tech' %>
+    <%= "I am Tech" %>
+  <% end %>
+
+  <br />
+  <br />
+
+  Welcome, <%= current_user.type %>
+
 
