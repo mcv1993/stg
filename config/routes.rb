@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   resources :clients, only: [:new, :create, :show, :index]
   resources :sections, only: [:new, :create, :show]
   resources :infos, only: [:new, :create, :show]
+
+  namespace :user do
+    root :to => "dashboard#show"
+  end
 end

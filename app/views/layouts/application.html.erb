@@ -13,7 +13,11 @@
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  Welcome, <%= current_user %><%= link_to image_tag('stg.png'), root_path, class: 'navbar-brand' %>
+
+  <% if user_signed_in? %>
+      Welcome, <%= current_user.type %>
+  <% end %>
+  <%= link_to image_tag('stg.png'), root_path, class: 'navbar-brand' %>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <%= link_to 'Home', root_path, class: 'nav-item nav-link active' %>
