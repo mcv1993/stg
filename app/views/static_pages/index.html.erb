@@ -1,6 +1,6 @@
 
-<h1 class="title">STG</h1>
-<h2 class="title">Note Directory</h2>
+<h1 class="title">[Company Name]</h1>
+<h2 class="title">[App Name]</h2>
 <br />
 <br />
 
@@ -9,11 +9,13 @@
   <div class="loginform title">
     <h2>Log in</h2>
     <%= simple_form_for(:user,  url: session_path(:user)) do |f| %>
-      <div class="form-inputs">
+      <div class="form-inputs form-inline">
         <%= f.input :email,
                   required: false,
                   autofocus: true,
                   input_html: { autocomplete: "email" } %>
+
+
         <%= f.input :password,
                   required: false,
                   input_html: { autocomplete: "current-password" } %>
