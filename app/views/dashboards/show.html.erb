@@ -98,22 +98,25 @@
   <% if user_signed_in? %>
     <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
   <% end %>
-
-  <% if current_user.type == 'Admin' %>
-    <%= "I am Admin" %>
-  <% end %>
-
-    <% if current_user.type == 'Sa' %>
-    <%= "I am SA" %>
-  <% end %>
-
-    <% if current_user.type == 'Tech' %>
-    <%= "I am Tech" %>
-  <% end %>
+  I am <%= current_user.type %>
 
   <br />
   <br />
 
   Welcome, <%= current_user.type %>
 
+  <br />
+  <br />
+  <br />
+  Modules:
+    <br />
+    <br />
+    <%= link_to 'Docs', module_doc_path %>
+      <br />
 
+  <% if current_user.type == "Sa" %>
+    <%= link_to 'User Mod', module_usermod_path %> 
+      <br />
+    <%= link_to 'Client Mod', module_clientmod_path %>
+  <% end %>
+      <br />

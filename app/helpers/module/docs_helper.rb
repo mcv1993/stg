@@ -1,0 +1,2 @@
+module Module::DocsHelper
+end

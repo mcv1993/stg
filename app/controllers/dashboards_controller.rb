@@ -1,6 +1,11 @@
 class DashboardsController < ApplicationController
   before_action :authenticate_user!
 
+
+  def index
+
+  end
+
   def new
     #access to new user form
     #access to new client, section, info forms

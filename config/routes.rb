@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   resources :sections, only: [:new, :create, :show]
   resources :infos, only: [:new, :create, :show]
 
-  namespace :user do
-    root :to => "dashboard#show"
+  namespace :module do
+    resource :doc, only: [:show]
+    resource :usermod, only: [:show]
+    resource :clientmod, only: [:show]
   end
+
 end

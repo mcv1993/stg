@@ -5,17 +5,16 @@ class ClientsController < ApplicationControllers
     @client = Client.all
   end
 
+  def new
+  end
+
   def create
     @client = Client.create(client_params)
-    redirect_to root_path
+    redirect_to dashboards_path
   end
 
   def show
     @section = Section.new
-  end
-
-  def create_api
-    ApiKeyMaker.make_api_key(12)
   end
 
   private
