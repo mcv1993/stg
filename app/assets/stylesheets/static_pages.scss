@@ -1,3 +1,25 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.title {
+  text-align: center
+ }
+
+ .loginform  {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+ }
+
+ .form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.password {
+  margin-left: 20px;
+}
+

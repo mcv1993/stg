@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     resource :doc, only: [:show]
     resource :usermod, only: [:show]
     resource :clientmod, only: [:show]
+    resources :users
+    resources :clients
+    resources :sections
+    resources :infos
   end
 
 end
