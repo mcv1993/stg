@@ -1,2 +1,25 @@
-show user mod page
-<%= User.all %>
+<section class="usermod">
+  <header class="header">
+    <h1>userMOD</h1>
+  </header>
+
+  <section class="main">
+    <ul class="user-mod">
+    </ul>
+  </section>
+</section>
+<script>
+  $(function() {
+    $.get("/users").success( function( data ) {
+      var htmlString = "";
+
+      $.each(data, function(index, user) {
+        var liElement = '<li><div class="user-mod">' + user.email + " --- " + "Created at: " + user.created_at + user.type +
+        '</div></li>';
+        htmlString += liElement;
+      });
+      var ulUsers = $('.user-mod');
+      ulUsers.html(htmlString);
+    });
+  });
+</script>
