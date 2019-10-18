@@ -3,11 +3,66 @@
     <h1>userMOD</h1>
   </header>
 
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newUserModal">
+  Add a new user...
+</button>
+<%= link_to "All Users", users_path%>
+
+
   <section class="main">
     <ul class="user-mod">
     </ul>
   </section>
 </section>
+
+
+
+<!-- New User Modal -->
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="newUserModal">Add a new User</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @user, url: users_path do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :type,
+                        required: true,
+                        input_html: { autocomplete: "SA/Admin/Tech" } %>           
+          </div>
+<br />
+<br />
+          <div class="form-actions">
+            <%= f.submit "Add New User" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
 <script>
   $(function() {
     $.get("/users").success( function( data ) {
