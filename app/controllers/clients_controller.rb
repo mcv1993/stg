@@ -1,8 +1,8 @@
-class ClientsController < ApplicationControllers
+class ClientsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @client = Client.all
+    render json: Client.all
   end
 
   def new

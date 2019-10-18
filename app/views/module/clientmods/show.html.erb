@@ -1,1 +1,28 @@
-client mod show
+<section class="clientmod">
+  <header class="header">
+    <h1>clientMOD</h1>
+  </header>
+
+  <section class="main">
+    <ul class="client-mod">
+    </ul>
+  </section>
+</section>
+
+<script>
+$(function() {
+  $.get("/clients").success( function( data ) {
+    var htmlString = "";
+
+    $.each(data, function(index, client) {
+      var liElement = '<li><div class="client-mod">' + 
+      client.clientname +
+      '</div></li>';
+      htmlString += liElement;
+    });
+    console.log(htmlString);
+    var ulClients = $('.client-mod');
+    ulClients.html(htmlString);
+  });
+});
+</script>
