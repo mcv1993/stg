@@ -69,7 +69,7 @@
       var htmlString = "";
 
       $.each(data, function(index, user) {
-        var liElement = '<li><div class="user-mod">' + user.email + " --- " + "Created at: " + user.created_at + " --- " + user.id + " --- " + user.type +
+        var liElement = '<li><div class="user-mod">' + user.email + " --- " + "Created at: " + user.created_at + " --- " + user.id + " --- " + user.admin_level +
         '</div></li>';
         htmlString += liElement;
       });
