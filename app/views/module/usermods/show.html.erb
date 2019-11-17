@@ -42,7 +42,7 @@
             <%= f.input :password_confirmation,
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
-            <%= f.input :type,
+            <%= f.input :user_type,
                         required: true,
                         input_html: { autocomplete: "SA/Admin/Tech" } %>           
           </div>
@@ -69,7 +69,7 @@
       var htmlString = "";
 
       $.each(data, function(index, user) {
-        var liElement = '<li><div class="user-mod">' + user.email + " --- " + "Created at: " + user.created_at + " --- " + user.id + " --- " + user.admin_level +
+        var liElement = '<li><div class="user-mod">' + user.email + " --- " + "Created at: " + user.created_at + " --- " + user.id + " --- " + user.user_type +
         '</div></li>';
         htmlString += liElement;
       });

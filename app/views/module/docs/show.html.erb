@@ -1,3 +1,29 @@
-doc show page
+<section class="documents">
+  <header class="header">
+    <h1>DOCS</h1>
+  </header>
+</section>
 
-<%= Client.all %>
+<div>
+<ul id="list1">
+</ul>
+</div>
+
+<script>
+$(function() {
+  $.get("/clients").success( function( data ) {
+    $.each(data, function(index, client) {
+                // Create anchor element. 
+                var a = document.createElement('a');  
+                var ulist = document.getElementById("list1");
+                var newItem = document.createElement("li");
+
+                a.textContent = client.clientname;
+                a.setAttribute('href', "http://www.msn.com");
+                newItem.appendChild(a);
+                ulist.appendChild(newItem); 
+
+    });
+  });
+});
+</script>

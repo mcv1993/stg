@@ -15,6 +15,13 @@ class ClientsController < ApplicationController
 
   def show
     @section = Section.new
+    
+  end
+
+  def edit
+  end
+
+  def update
   end
 
   private
