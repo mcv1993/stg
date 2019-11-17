@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @user = User.all
+    render json: User.all
   end
 
   def new
@@ -20,10 +20,11 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :type)
+    params.require(:user).permit(:email, :password, :user_type)
   end
 
 end

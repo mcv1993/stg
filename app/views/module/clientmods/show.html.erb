@@ -1,1 +1,100 @@
-client mod show
+<section class="clientmod">
+  <header class="header">
+    <h1>clientMOD</h1>
+  </header>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newClientModal">
+  Add a new client...
+</button>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newClientModal">
+  Edit a client...
+</button>
+
+<!-- <%= link_to "All Clients", clients_path%> -->
+
+  <section class="main">
+    <ul class="client-mod">
+    </ul>
+  </section>
+</section>
+
+<!-- New Client Modal -->
+<div class="modal fade" id="newClientModal" tabindex="-1" role="dialog" aria-labelledby="newClientModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="newClientModal">Add a new Client</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @client, url: clients_path do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :clientname,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+          </div>
+
+          <div class="form-actions">
+            <%= f.submit "Add New Client" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Client Modal -->
+<div class="modal fade" id="editClientModal" tabindex="-1" role="dialog" aria-labelledby="editClientModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="editClientModal">Edit a Client</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @client, url: clients_path do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :clientname,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+          </div>
+
+          <div class="form-actions">
+            <%= f.submit "Submit Changes" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(function() {
+  $.get("/clients").success( function( data ) {
+    var htmlString = "";
+
+    $.each(data, function(index, client) {
+      var liElement = '<li><div class="client-mod">' + 
+      client.clientname +
+      '</div></li>';
+      htmlString += liElement;
+    });
+    console.log(htmlString);
+    var ulClients = $('.client-mod');
+    ulClients.html(htmlString);
+  });
+});
+</script>

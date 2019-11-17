@@ -7,19 +7,20 @@
  
 
   <div class="loginform title">
-    <h2>Log in</h2>
+  
     <%= simple_form_for(:user,  url: session_path(:user)) do |f| %>
       <div class="form-inputs form-inline">
         <%= f.input :email,
+                  label: false,
                   required: false,
                   autofocus: true,
-                  input_html: { autocomplete: "email" } %>
+                  input_html: { autocomplete: 'yes' } %>
 
 
         <%= f.input :password,
+                  label: false,
                   required: false,
                   input_html: { autocomplete: "current-password" } %>
-        <%= f.check_box :remember_me %>
       </div>
 
       <div class="form-actions">
