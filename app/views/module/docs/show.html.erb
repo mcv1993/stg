@@ -10,7 +10,8 @@
 </div>
 
 <script>
-$(function() {
+
+$(function show_link_list() {
   $.get("/clients").success( function( data ) {
     $.each(data, function(index, client) {
                 // Create anchor element. 
@@ -19,10 +20,9 @@ $(function() {
                 var newItem = document.createElement("li");
 
                 a.textContent = client.clientname;
-                a.setAttribute('href', "http://www.msn.com");
+                a.setAttribute('href', '/clients/' + client.id );
                 newItem.appendChild(a);
                 ulist.appendChild(newItem); 
-
     });
   });
 });

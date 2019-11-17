@@ -15,7 +15,7 @@ class ClientsController < ApplicationController
 
   def show
     @section = Section.new
-    
+    @clients = Client.find(params[:id])
   end
 
   def edit
