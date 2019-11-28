@@ -1,4 +1,4 @@
-class Info < 
-  belongs_to :section
+class Info < ApplicationRecord
+  belongs_to :section, required: false
   
 end

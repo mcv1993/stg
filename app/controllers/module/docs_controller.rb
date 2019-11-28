@@ -3,6 +3,7 @@ class Module::DocsController < ApplicationController
 
   def show
     @client = Client.new
+    @section = Section.new
   end
 
 end

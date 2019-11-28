@@ -9,12 +9,13 @@ class ClientsController < ApplicationController
   end
 
   def create
+    @section = Section.new
     @client = Client.create(client_params)
     redirect_to dashboard_path
   end
 
   def show
-    @section = Section.new
+    @sections = Section.new
     @clients = Client.find(params[:id])
   end
 
