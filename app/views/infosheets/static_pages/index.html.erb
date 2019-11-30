@@ -1,0 +1,28 @@
+<h1>Infosheets Homepage</h1>
+-list all clients
+<br />
+<br />
+
+<div>
+<ul id="list1">
+</ul>
+</div>
+
+<script>
+
+$(function show_link_list() {
+  $.get("/infosheets/clients").success( function( data ) {
+    $.each(data, function(index, client) {
+                // Create anchor element. 
+                var a = document.createElement('a');  
+                var ulist = document.getElementById("list1");
+                var newItem = document.createElement("li");
+
+                a.textContent = client.clientname;
+                a.setAttribute('href', '/infosheets/clients/' + client.id );
+                newItem.appendChild(a);
+                ulist.appendChild(newItem); 
+    });
+  });
+});
+</script>

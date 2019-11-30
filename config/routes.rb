@@ -3,23 +3,34 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: [:show]
   root 'static_pages#index'
-  resources :users, only: [:new, :create, :show, :index]
-  resources :clients, only: [:show, :index] do
-    resources :sections, only: [:show, :index, :new, :create] do
-      resources :infos, only: [:show, :index]
-    end
-  end
 
-  namespace :module do
-    resource :doc, only: [:show] do
-      resources :clients, only: [:show] do
-        resources :sections do
-          resources :infos, only: [:index, :show, :new, :create]
-        end
+
+  namespace :infosheets do
+    resources :static_pages, only: [:index]
+    resources :clients, only: [:index, :show] do
+      resources :sections, only: [:index, :show] do
+        resources :infos, only: [:index, :show]
       end
     end
-    resource :usermod, only: [:show]
-    resource :clientmod, only: [:show]
   end
 
+  namespace :infosheetmod do
+    resources :static_pages, only: [:index]
+    resources :clients, only: [:index, :new, :create, :show] do
+      resources :sections, only: [:new, :create, :show] do
+        resources :infos
+      end
+    end
+  end
+
+  namespace :clientmod do
+    resources :static_pages, only: [:index]
+    resources :clients
+  end
+
+  namespace :usermod do
+    resources :static_pages, only: [:index]
+    resources :users
+  end
+ 
 end
