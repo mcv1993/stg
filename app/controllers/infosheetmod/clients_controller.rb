@@ -6,6 +6,23 @@ class Infosheetmod::ClientsController < ApplicationController
   end
 
   def new
-    @client = Client.find(params[:id])
+    @client = Client.new
+    @section = Section.new
   end
+
+  def create
+    @section = Section.new
+  end
+
+  def show
+    @clients = Client.find(params[:id])
+  end
+
+  private
+
+  helper_method :current_client
+  def current_client
+    @current_client ||= Client.find(params[:id])
+  end
+
 end

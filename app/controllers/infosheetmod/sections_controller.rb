@@ -6,17 +6,13 @@ class Infosheetmod::SectionsController < ApplicationController
   end
   
   def new
+    @section = Section.new
+    @client = Client.find(params[:client_id])
   end
 
   def create
-    @section = Section.create(section_params)
-    redirect_to dashboard_path
-  end
-
-  def show
-    @infos = Info.new
-    @sections = Section.find(params[:id])
-
+    @section = @current_client.sections.create(section_params)
+    redirect_to infosheetmod_client_path(current_client.id)
   end
 
   private
@@ -24,4 +20,11 @@ class Infosheetmod::SectionsController < ApplicationController
   def section_params
     params.require(:section).permit(:title)
   end
+
+  helper_method :current_client
+  def current_client
+    @current_client ||= Client.find(params[:client_id])
+  end
+
+
 end

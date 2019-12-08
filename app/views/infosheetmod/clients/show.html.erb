@@ -1,10 +1,13 @@
 Client Show Page
 <br />
+-list sections
+<br />
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newSectionModal">
   Create a Section...
 </button>
+
 
 <!-- New Client Modal -->
 <div class="modal fade" id="newSectionModal" tabindex="-1" role="dialog" aria-labelledby="newSectionModal" aria-hidden="true">
@@ -14,7 +17,7 @@ Client Show Page
         <h4 class="modal-title" id="newSectionModal">Add a new Section</h4>
       </div>
       <div class="modal-body">
-        <%= simple_form_for @sections, url: infosheetmod_client_sections_path(@client) do |f| %>
+        <%= simple_form_for @section, url: infosheetmod_client_sections_path(current_client) do |f| %>
           <%= f.error_notification %>
 
           <div class="form-inputs">
@@ -35,7 +38,6 @@ Client Show Page
   </div>
 </div>
 
-
 <div>
 <ul id="list1">
 </ul>
@@ -53,7 +55,7 @@ $(function show_link_list() {
                 var newItem = document.createElement("li");
 
                 a.textContent = section.title;
-                a.setAttribute('href', '/infosheets/clients/' + '/sections/' + section.id );
+                a.setAttribute('href', '/infosheets/clients/' + section.client_id + '/sections/' + section.id );
                 newItem.appendChild(a);
                 ulist.appendChild(newItem); 
     });
