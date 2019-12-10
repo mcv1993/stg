@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   namespace :infosheetmod do
     resources :static_pages, only: [:index]
     resources :clients, only: [:index, :new, :create, :show] do
-      resources :sections, only: [:new, :create, :show] do
+      resources :sections, only: [:index, :new, :create, :show] do
         resources :infos
       end
     end

@@ -25,4 +25,9 @@ class SectionsController < ApplicationController
     params.require(:section).permit(:title)
   end
 
+  helper_method :current_client
+  def current_client
+    @current_client ||= Client.find(params[:client_id])
+  end
+
 end

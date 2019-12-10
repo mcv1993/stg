@@ -1,47 +1,9 @@
-Client Show Page
+<%= current_client.clientname %> Show Page
 <br />
 -list sections
 <br />
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newSectionModal">
-  Create a Section...
-</button>
 
-
-<!-- New Client Modal -->
-<div class="modal fade" id="newSectionModal" tabindex="-1" role="dialog" aria-labelledby="newSectionModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="newSectionModal">Add a new Section</h4>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for @section, url: infosheetmod_client_sections_path(current_client) do |f| %>
-          <%= f.error_notification %>
-
-          <div class="form-inputs">
-            <%= f.input :title,
-                        required: true,
-                        autofocus: true%>
-          </div>
-
-          <div class="form-actions">
-            <%= f.submit "Create a New Section" %>
-          </div>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div>
-<ul id="list1">
-</ul>
-</div>
 
 <script>
 $(function show_link_list() {

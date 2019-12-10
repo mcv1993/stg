@@ -30,4 +30,9 @@ class ClientsController < ApplicationController
   def client_params
     params.require(:client).permit(:clientname)
   end
+
+  helper_method :current_client
+  def current_client
+    @current_client ||= Client.find(params[:client_id])
+  end
 end

@@ -2,7 +2,7 @@ class Infosheetmod::SectionsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    render json: Section.all
+    @section = Section.new
   end
   
   def new

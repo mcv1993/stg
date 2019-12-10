@@ -1,5 +1,5 @@
 class Section < ApplicationRecord
-  belongs_to :client, required: false
+  belongs_to :client
   has_many :infos
 
 end
