@@ -3,6 +3,7 @@ class Infosheetmod::SectionsController < ApplicationController
   
   def index
     @section = Section.new
+    @client = Client.find(params[:client_id])
   end
   
   def new
@@ -11,7 +12,7 @@ class Infosheetmod::SectionsController < ApplicationController
   end
 
   def create
-    @section = @current_client.sections.create(section_params)
+    @section = @current_client.create(section_params)
     redirect_to infosheetmod_client_path(current_client.id)
   end
 
