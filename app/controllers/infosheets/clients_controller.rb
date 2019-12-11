@@ -3,7 +3,6 @@ class Infosheets::ClientsController < ApplicationController
   
   def index
     render json: Client.all
-    render json: Section.all
   end
 
   def show

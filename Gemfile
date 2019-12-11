@@ -67,3 +67,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'api_key_maker'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+end
