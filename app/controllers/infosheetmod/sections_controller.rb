@@ -2,6 +2,7 @@ class Infosheetmod::SectionsController < ApplicationController
   before_action :authenticate_user!
   
   def index
+    render json: Section.all
     @section = Section.new
     @client = Client.find(params[:client_id])
   end
@@ -12,7 +13,7 @@ class Infosheetmod::SectionsController < ApplicationController
   end
 
   def create
-    @section = @current_client.create(section_params)
+    @section = current_client.sections.create(section_params)
     redirect_to infosheetmod_client_path(current_client.id)
   end
 
