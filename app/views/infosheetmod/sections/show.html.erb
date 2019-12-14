@@ -1,0 +1,29 @@
+section show
+
+...create info
+<br />
+-list infos
+<div>
+<ul id="list1">
+</ul>
+</div>
+
+<script>
+$(function show_link_list() {
+
+  $.get('/infosheetmod/clients/'+ '<%= @clients.id %>' + '/sections/' + '<%= @sections.id %>' + '/infos').success( function( data ) {
+    $.each(data, function(index, info) {
+                // Create anchor element. 
+                var a = document.createElement('a');  
+                var ulist = document.getElementById("list1");
+                var newItem = document.createElement("li");
+
+                a.textContent = info.infotitle;
+                a.setAttribute('href', '/infosheetmod/clients/'+ '<%= @clients.id %>' + '/sections/' + '<%= @sections.id %>' + '/infos' );
+                newItem.appendChild(a);
+                ulist.appendChild(newItem); 
+    });
+  });
+
+});
+</script>

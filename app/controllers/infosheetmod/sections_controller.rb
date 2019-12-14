@@ -3,18 +3,21 @@ class Infosheetmod::SectionsController < ApplicationController
   
   def index
     render json: Section.all
-    @section = Section.new
-    @client = Client.find(params[:client_id])
   end
   
   def new
     @section = Section.new
-    @client = Client.find(params[:client_id])
   end
 
   def create
     @section = current_client.sections.create(section_params)
     redirect_to infosheetmod_client_path(current_client.id)
+  end
+
+  def show
+    @clients = current_client
+    @sections = Section.find(params[:id])
+    @info = Info.all
   end
 
   private

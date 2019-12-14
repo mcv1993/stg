@@ -15,7 +15,6 @@ class Infosheetmod::ClientsController < ApplicationController
   end
 
   def show
-    @clients = Client.new
     @clients = Client.find(params[:id])
     @section = Section.all
     @section = Section.new
