@@ -6,10 +6,11 @@ class Infosheetmod::InfosController < ApplicationController
     
     def new
       @info = Info.new
+      @section = Section.all
     end
 
     def create
-        @info = current_client.current_section.infos.create(info_params)
+        @info = Info.create(info_params)
         redirect_to infosheetmod_client_section_path(client_id: current_client, id: current_section)
     end
 
@@ -26,6 +27,6 @@ class Infosheetmod::InfosController < ApplicationController
 
     helper_method :current_section
     def current_section
-        @current_section ||= current_client.sections.find(params[:section_id])
+        @current_section ||= Section.find(params[:section_id])
     end
 end
