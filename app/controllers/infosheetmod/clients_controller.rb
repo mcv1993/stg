@@ -22,9 +22,4 @@ class Infosheetmod::ClientsController < ApplicationController
 
   private
 
-  helper_method :current_client
-  def current_client
-    @current_client ||= Client.find(params[:id])
-  end
-
 end
