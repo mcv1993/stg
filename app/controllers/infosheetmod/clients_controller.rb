@@ -11,13 +11,11 @@ class Infosheetmod::ClientsController < ApplicationController
   end
 
   def create
-    @section = Section.new
   end
 
   def show
     @clients = Client.find(params[:id])
     @section = Section.all
-    @section = Section.new
   end
 
   private

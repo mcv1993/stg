@@ -2,7 +2,7 @@
 
   <h1>Add a new section</h1>
 
-<%= simple_form_for @section, url: infosheetmod_client_sections_path(current_client) do |f| %>
+<%= simple_form_for @section, url: infosheetmod_client_sections_path(current_client.id) do |f| %>
           <%= f.error_notification %>
 
           <div class="form-inputs">
