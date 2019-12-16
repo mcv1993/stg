@@ -1,6 +1,6 @@
 <h1>Add a new Info</h1>
 
-<%= simple_form_for @info, url: infosheetmod_client_section_infos_path(client_id: current_client, section_id: current_section) do |f| %>
+<%= simple_form_for @info, url: infosheetmod_section_infos_path(current_section.id) do |f| %>
           <%= f.error_notification %>
 
           <div class="form-inputs">

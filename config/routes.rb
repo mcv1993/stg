@@ -17,15 +17,15 @@ Rails.application.routes.draw do
   namespace :infosheetmod do
     resources :static_pages, only: [:index]
 
-    resources :clients do |clients|
+    resources :clients, only: [:index, :show] do |clients|
       resources :sections, only: [:index, :new, :create], :name_prefix => "client_"
     end
 
-    resources :sections do |section|
+    resources :sections, only: [:show, :edit, :update, :destroy]  do |section|
         resources :infos, only: [:index, :new, :create], :name_prefix => "section_"
     end
 
-    resources :infos
+    resources :infos, only: [:show, :edit, :update, :destroy]
   end
 
   namespace :clientmod do

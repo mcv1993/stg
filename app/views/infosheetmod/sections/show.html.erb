@@ -1,6 +1,6 @@
 section show
 <br />
-<%= link_to '...create info', new_infosheetmod_client_section_info_path(client_id: @clients, section_id: @sections) %>
+<%= link_to '...create info', new_infosheetmod_section_info_path(section_id: @sections.id) %>
 <br />
 -list infos
 <div>
@@ -11,7 +11,7 @@ section show
 <script>
 $(function show_link_list() {
 
-  $.get('/infosheetmod/clients/'+ '<%= @clients.id %>' + '/sections/' + '<%= @sections.id %>' + '/infos').success( function( data ) {
+  $.get('/infosheetmod/sections/' + '<%= @sections.id %>' + '/infos').success( function( data ) {
     $.each(data, function(index, info) {
                 // Create anchor element. 
                 var a = document.createElement('a');  
@@ -19,7 +19,7 @@ $(function show_link_list() {
                 var newItem = document.createElement("li");
 
                 a.textContent = info.infotitle;
-                a.setAttribute('href', '/infosheetmod/clients/'+ '<%= @clients.id %>' + '/sections/' + '<%= @sections.id %>' + '/infos' );
+                a.setAttribute('href', '/infosheetmod/sections/' + '<%= @sections.id %>' + '/infos' );
                 newItem.appendChild(a);
                 ulist.appendChild(newItem); 
     });

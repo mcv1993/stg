@@ -1,6 +1,5 @@
 class Infosheetmod::SectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_client
   
   def index
     render json: Section.where(client_id: current_client.id)
@@ -8,6 +7,7 @@ class Infosheetmod::SectionsController < ApplicationController
   
   def new
     @section = Section.new
+    @info = Info.new
   end
 
   def create
@@ -16,17 +16,16 @@ class Infosheetmod::SectionsController < ApplicationController
   end
 
   def show
-    @clients = current_client
     @sections = Section.find(params[:id])
-    @info = Info.all
   end
 
   private
 
   def section_params
-    params.require(:section).permit(:title, :user_id)
+    params.require(:section).permit(:title)
   end
 
+  helper_method :current_client
   def current_client
     @current_client ||= Client.find(params[:client_id])
   end
