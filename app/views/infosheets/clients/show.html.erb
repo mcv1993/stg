@@ -1,42 +1,8 @@
-Client Show Page
+<%= @clients.clientname %> Show Page
 <br />
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newSectionModal">
-  Create a Section...
-</button>
-
-List sections
-
-<!-- New Client Modal -->
-<div class="modal fade" id="newSectionModal" tabindex="-1" role="dialog" aria-labelledby="newSectionModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="newSectionModal">Add a new Client</h4>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for @sections, url: infosheets_client_sections_path(@clients) do |f| %>
-          <%= f.error_notification %>
-
-          <div class="form-inputs">
-            <%= f.input :title,
-                        required: true,
-                        autofocus: true%>
-          </div>
-
-          <div class="form-actions">
-            <%= f.submit "Create a New Section" %>
-          </div>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+<br />
+-list sections
+<br />
 
 <div>
 <ul id="list1">
@@ -45,9 +11,8 @@ List sections
 
 <script>
 $(function show_link_list() {
- 
 
-  $.get("/infosheets/clients/:client_id/sections").success( function( data ) {
+  $.get('/infosheetmod/clients/'+ '<%= @clients.id %>' + '/sections').success( function( data ) {
     $.each(data, function(index, section) {
                 // Create anchor element. 
                 var a = document.createElement('a');  
@@ -55,7 +20,7 @@ $(function show_link_list() {
                 var newItem = document.createElement("li");
 
                 a.textContent = section.title;
-                a.setAttribute('href', '/infosheets/clients/' + '/sections/' + section.id );
+                a.setAttribute('href', '/infosheetmod/sections/' + section.id );
                 newItem.appendChild(a);
                 ulist.appendChild(newItem); 
     });

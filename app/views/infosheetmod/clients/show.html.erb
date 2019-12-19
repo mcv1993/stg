@@ -6,7 +6,7 @@
 <br />
 
 <div>
-<ul id="list1">
+<ul class="list-group" id="list1">
 </ul>
 </div>
 
@@ -17,8 +17,8 @@ $(function show_link_list() {
     $.each(data, function(index, section) {
                 // Create anchor element. 
                 var a = document.createElement('a');  
-                var ulist = document.getElementById("list1");
-                var newItem = document.createElement("li");
+                var ulist = document.getElementById('list1');
+                var newItem = document.createElement('li');
 
                 a.textContent = section.title;
                 a.setAttribute('href', '/infosheetmod/sections/' + section.id );

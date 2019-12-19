@@ -7,11 +7,16 @@ Rails.application.routes.draw do
 
   namespace :infosheets do
     resources :static_pages, only: [:index]
-    resources :clients, only: [:index, :show] do
-      resources :sections, only: [:index, :show] do
-        resources :infos, only: [:index, :show]
-      end
+
+    resources :clients, only: [:index, :show] do |clients|
+      resources :sections, only: [:index], :name_prefix => "client_"
     end
+
+    resources :sections, only: [:show, :edit, :update, :destroy]  do |section|
+        resources :infos, only: [:index], :name_prefix => "section_"
+    end
+
+    resources :infos, only: [:show]
   end
 
   namespace :infosheetmod do

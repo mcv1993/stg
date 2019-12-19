@@ -2,7 +2,7 @@ class Infosheets::SectionsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    render json: Section.all
+    render json: Section.where(client_id: current_client.id)
   end
 
   def new
@@ -24,4 +24,10 @@ class Infosheets::SectionsController < ApplicationController
   def section_params
     params.require(:section).permit(:title)
   end
+
+  helper_method :current_client
+  def current_client
+    @current_client ||= Client.find(params[:client_id])
+  end
+  
 end

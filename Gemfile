@@ -71,3 +71,5 @@ gem 'api_key_maker'
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
 end
+
+gem 'bootstrap-sass'
