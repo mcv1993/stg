@@ -3,19 +3,44 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: [:show]
   root 'static_pages#index'
-  resources :users, only: [:new, :create, :show, :index]
-  resources :clients, only: [:new, :create, :show, :index]
-  resources :sections, only: [:new, :create, :show]
-  resources :infos, only: [:new, :create, :show]
 
-  namespace :module do
-    resource :doc, only: [:show]
-    resource :usermod, only: [:show]
-    resource :clientmod, only: [:show]
-    resources :users
-    resources :clients
-    resources :sections
-    resources :infos
+
+  namespace :infosheets do
+    resources :static_pages, only: [:index]
+
+    resources :clients, only: [:index, :show] do |clients|
+      resources :sections, only: [:index], :name_prefix => "client_"
+    end
+
+    resources :sections, only: [:show, :edit, :update, :destroy]  do |section|
+        resources :infos, only: [:index], :name_prefix => "section_"
+    end
+
+    resources :infos, only: [:show]
   end
 
+  namespace :infosheetmod do
+    resources :static_pages, only: [:index]
+
+    resources :clients, only: [:index, :show] do |clients|
+      resources :sections, only: [:index, :new, :create], :name_prefix => "client_"
+    end
+
+    resources :sections, only: [:show, :edit, :update, :destroy]  do |section|
+        resources :infos, only: [:index, :new, :create], :name_prefix => "section_"
+    end
+
+    resources :infos, only: [:show, :edit, :update, :destroy]
+  end
+
+  namespace :clientmod do
+    resources :static_pages, only: [:index]
+    resources :clients
+  end
+
+  namespace :usermod do
+    resources :static_pages, only: [:index]
+    resources :users
+  end
+ 
 end

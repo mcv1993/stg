@@ -23,12 +23,14 @@
   Modules:
     <br />
     <br />
-    <%= link_to 'Docs', module_doc_path %>
+    <%= link_to 'Infosheets', infosheets_static_pages_path %>
       <br />
+    <%= link_to 'Sheet Mod', infosheetmod_static_pages_path %>
+    <br />
 
   <% if current_user.type == "Sa" %>
-    <%= link_to 'User Mod', module_usermod_path %> 
+    <%= link_to 'User Mod', usermod_static_pages_path %> 
       <br />
-    <%= link_to 'Client Mod', module_clientmod_path %>
+    <%= link_to 'Client Mod', clientmod_static_pages_path %>
   <% end %>
       <br />

@@ -1,0 +1,30 @@
+<%= @clients.clientname %> Show Page
+<br />
+<br />
+-list sections
+<br />
+
+<div>
+<ul id="list1">
+</ul>
+</div>
+
+<script>
+$(function show_link_list() {
+
+  $.get('/infosheetmod/clients/'+ '<%= @clients.id %>' + '/sections').success( function( data ) {
+    $.each(data, function(index, section) {
+                // Create anchor element. 
+                var a = document.createElement('a');  
+                var ulist = document.getElementById("list1");
+                var newItem = document.createElement("li");
+
+                a.textContent = section.title;
+                a.setAttribute('href', '/infosheetmod/sections/' + section.id );
+                newItem.appendChild(a);
+                ulist.appendChild(newItem); 
+    });
+  });
+
+});
+</script>

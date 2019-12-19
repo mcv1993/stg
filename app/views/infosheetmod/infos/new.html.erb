@@ -1,0 +1,14 @@
+<h1>Add a new Info</h1>
+
+<%= simple_form_for @info, url: infosheetmod_section_infos_path(current_section.id) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :infotitle,
+                        required: true%>
+          </div>
+
+          <div class="form-actions">
+            <%= f.submit "Create a New Info" %>
+          </div>
+        <% end %>
