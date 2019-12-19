@@ -7,7 +7,6 @@ class Infosheetmod::SectionsController < ApplicationController
   
   def new
     @section = Section.new
-    @info = Info.new
   end
 
   def create

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :sections, only: [:index], :name_prefix => "client_"
     end
 
-    resources :sections, only: [:show, :edit, :update, :destroy]  do |section|
+    resources :sections, only: [:show]  do |section|
         resources :infos, only: [:index], :name_prefix => "section_"
     end
 
