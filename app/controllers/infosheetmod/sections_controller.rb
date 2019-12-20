@@ -16,6 +16,7 @@ class Infosheetmod::SectionsController < ApplicationController
 
   def show
     @sections = Section.find(params[:id])
+    @infos = Info.new
   end
 
   private
@@ -28,6 +29,5 @@ class Infosheetmod::SectionsController < ApplicationController
   def current_client
     @current_client ||= Client.find(params[:client_id])
   end
-
 
 end

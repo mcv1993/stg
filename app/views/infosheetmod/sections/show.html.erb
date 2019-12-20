@@ -19,7 +19,7 @@ $(function show_link_list() {
                 var newItem = document.createElement("li");
 
                 a.textContent = info.infotitle;
-                a.setAttribute('href', '/infosheetmod/sections/' + '<%= @sections.id %>' + '/infos' );
+                a.setAttribute('href', '/infosheetmod/infos/' + info.id );
                 newItem.appendChild(a);
                 ulist.appendChild(newItem); 
     });
